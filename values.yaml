@@ -1432,7 +1432,7 @@ sidecar:
     # value of label that the configmaps with rules are set to
     labelValue: null
     # folder in the pod that should hold the collected rules (unless `defaultFolderName` is set)
-    folder: /tmp/rules
+    folder: /data/rules
     # The default folder name, it will create a subfolder under the `folder` and put rules in there instead
     defaultFolderName: null
     # If specified, the sidecar will search for rules config-maps inside this namespace.
@@ -1462,7 +1462,7 @@ sidecar:
     SCProvider: true
     label: cortex_alertmanager
     labelValue: null
-    folder: /tmp/alertmanager
+    folder: /data/alertmanager
     defaultFolderName: null
     searchNamespace: null
     folderAnnotation: null
