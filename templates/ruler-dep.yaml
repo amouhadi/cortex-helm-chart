@@ -114,6 +114,8 @@ spec:
             - "-{{ $key }}={{ $value }}"
           {{- end }}
           volumeMounts:
+            - name: sc-rules-volume
+              mountPath: {{ .Values.sidecar.rules.folder | quote }}
             {{- if .Values.ruler.extraVolumeMounts }}
               {{ toYaml .Values.ruler.extraVolumeMounts | nindent 12}}
             {{- end }}
