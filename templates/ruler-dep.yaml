@@ -161,10 +161,7 @@ spec:
 {{- end }}
         - name: storage
           emptyDir: {}
-{{- if .Values.ruler }}
-  {{- range (keys .Values.ruler | sortAlpha) }}
-        - name: rules-{{ . }}
-          configMap:
-            name: {{ template "cortex.fullname" $ }}-rules-{{ . }}
-  {{- end }}
+{{- if .Values.sidecar.rules.enabled }}
+        - name: sc-rules-volume
+          emptyDir: {}
 {{- end }}
