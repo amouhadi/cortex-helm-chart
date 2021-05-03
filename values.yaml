@@ -1433,6 +1433,7 @@ sidecar:
     labelValue: null
     # folder in the pod that should hold the collected rules (unless `defaultFolderName` is set)
     folder: /data/rules
+    storageFolder: /tmp/rules
     # The default folder name, it will create a subfolder under the `folder` and put rules in there instead
     defaultFolderName: null
     # If specified, the sidecar will search for rules config-maps inside this namespace.
