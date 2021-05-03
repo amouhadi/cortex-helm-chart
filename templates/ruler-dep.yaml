@@ -95,8 +95,6 @@ spec:
           volumeMounts:
             - name: sc-rules-volume
               mountPath: {{ .Values.sidecar.rules.folder | quote }}
-            - name: sc-rules-storage-volume
-              mountPath: {{ .Values.sidecar.rules.storageFolder | quote }}
       {{- end}}
         - name: {{ .Chart.Name }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
@@ -118,8 +116,6 @@ spec:
           volumeMounts:
             - name: sc-rules-volume
               mountPath: {{ .Values.sidecar.rules.folder | quote }}
-            - name: sc-rules-storage-volume
-              mountPath: {{ .Values.sidecar.rules.storageFolder | quote }}
             {{- if .Values.ruler.extraVolumeMounts }}
               {{ toYaml .Values.ruler.extraVolumeMounts | nindent 12}}
             {{- end }}
@@ -169,7 +165,5 @@ spec:
           emptyDir: {}
 {{- if .Values.sidecar.rules.enabled }}
         - name: sc-rules-volume
-          emptyDir: {}
-        - name: sc-rules-storage-volume
           emptyDir: {}
 {{- end }}
