@@ -72,8 +72,6 @@ spec:
             {{- end }}
             - name: FOLDER
               value: "{{ .Values.sidecar.rules.folder }}{{- with .Values.sidecar.rules.defaultFolderName }}/{{ . }}{{- end }}"
-            - name: STORAGE_FOLDER
-              value: "{{ .Values.sidecar.rules.storageFolder }}{{- with .Values.sidecar.rules.defaultFolderName }}/{{ . }}{{- end }}"
             - name: RESOURCE
               value: "both"
             {{- if .Values.sidecar.enableUniqueFilenames }}
