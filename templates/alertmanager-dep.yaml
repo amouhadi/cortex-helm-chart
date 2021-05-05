@@ -157,8 +157,8 @@ spec:
 {{- end }}
         - name: storage
           emptyDir: {}
-{{- end -}}
 {{- if .Values.sidecar.alertmanager.enabled }}
         - name: sc-alertmanager-volume
           emptyDir: {}
+{{- end -}}
 {{- end -}}

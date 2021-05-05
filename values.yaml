@@ -1462,7 +1462,7 @@ sidecar:
     SCProvider: true
     label: cortex_alertmanager
     labelValue: null
-    folder: /data/alertmanager
+    folder: /data
     defaultFolderName: null
     searchNamespace: null
     folderAnnotation: null
