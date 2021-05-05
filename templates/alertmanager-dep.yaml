@@ -116,6 +116,8 @@ spec:
             - name: storage
               mountPath: "/data"
               subPath: {{ .Values.alertmanager.persistence.subPath }}
+            - name: sc-alertmanager-volume
+              mountPath: {{ .Values.sidecar.alertmanager.folder | quote }}
           ports:
             - name: http-metrics
               containerPort: {{ .Values.config.server.http_listen_port }}
@@ -154,5 +156,9 @@ spec:
 {{ toYaml .Values.alertmanager.extraVolumes | indent 8}}
 {{- end }}
         - name: storage
+          emptyDir: {}
+{{- end -}}
+{{- if .Values.sidecar.alertmanager.enabled }}
+        - name: sc-alertmanager-volume
           emptyDir: {}
 {{- end -}}
