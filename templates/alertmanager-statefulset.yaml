@@ -96,10 +96,6 @@ spec:
         - name: storage
           emptyDir: {}
         {{- end }}
-        {{- if .Values.sidecar.alertmanager.enabled }}
-        - name: sc-alertmanager-volume
-          emptyDir: {}
-        {{- end -}}
         {{- if .Values.alertmanager.extraVolumes }}
         {{ toYaml .Values.alertmanager.extraVolumes | nindent 8 }}
         {{- end }}
@@ -147,8 +143,16 @@ spec:
           resources:
           {{ toYaml .Values.sidecar.resources | indent 6 }}
           volumeMounts:
-            - name: sc-alertmanager-volume
-              mountPath: {{ .Values.sidecar.alertmanager.folder | quote }}
+            - name: storage
+              mountPath: "/data"
+              {{- if .Values.alertmanager.persistentVolume.subPath }}
+              subPath: {{ .Values.alertmanager.persistentVolume.subPath }}
+              {{- else }}
+              {{- if .Values.alertmanager.persistence.subPath }}
+              ## DEPRECATED: use persistentVolume.subPath instead
+              subPath: {{ .Values.alertmanager.persistence.subPath }}
+              {{- end }}
+              {{- end }}
         {{- end}}
         - name: {{ .Chart.Name }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
@@ -181,8 +185,6 @@ spec:
               subPath: {{ .Values.alertmanager.persistence.subPath }}
               {{- end }}
               {{- end }}
-            - name: sc-alertmanager-volume
-              mountPath: {{ .Values.sidecar.alertmanager.folder | quote }}
           ports:
             - name: http-metrics
               containerPort: {{ .Values.config.server.http_listen_port }}
