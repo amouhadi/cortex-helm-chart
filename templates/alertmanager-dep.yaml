@@ -95,6 +95,8 @@ spec:
           {{- end }}
           resources:
         {{ toYaml .Values.sidecar.resources | indent 6 }}
+          securityContext:
+            runAsUser: 0
           volumeMounts:
             - name: storage
               mountPath: "/data"
