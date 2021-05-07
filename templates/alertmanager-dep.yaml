@@ -63,8 +63,10 @@ spec:
           {{- end }}
           imagePullPolicy: {{ .Values.sidecar.imagePullPolicy }}
           env:
+            {{- if .Values.sidecar.alertmanager.watchMethod }}
             - name: METHOD
               value: {{ .Values.sidecar.alertmanager.watchMethod }}
+            {{ end }}
             - name: LABEL
               value: "{{ .Values.sidecar.alertmanager.label }}"
             {{- if .Values.sidecar.alertmanager.labelValue }}

@@ -1429,6 +1429,7 @@ sidecar:
     SCProvider: true
     # label that the configmaps with rules are marked with
     label: cortex_rules
+    watchMethod: null
     # value of label that the configmaps with rules are set to
     labelValue: null
     # folder in the pod that should hold the collected rules (unless `defaultFolderName` is set)
@@ -1461,6 +1462,7 @@ sidecar:
     enabled: false
     SCProvider: true
     label: cortex_alertmanager
+    watchMethod: null
     labelValue: null
     folder: /data
     defaultFolderName: null
