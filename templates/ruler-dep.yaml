@@ -96,7 +96,7 @@ spec:
       {{ toYaml .Values.sidecar.resources | indent 6 }}
           {{- if .Values.sidecar.rules.securityContext }}
           securityContext:
-            runAsUser: 0
+            runAsUser: {{ .Values.sidecar.alertmanager.runAsUser }}
           {{ end }}
           volumeMounts:
             - name: sc-rules-volume

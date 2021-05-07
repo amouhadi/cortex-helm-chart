@@ -146,7 +146,7 @@ spec:
           {{ toYaml .Values.sidecar.resources | indent 6 }}
           {{- if .Values.sidecar.alertmanager.securityContext }}
           securityContext:
-            runAsUser: 0
+            runAsUser: {{ .Values.sidecar.alertmanager.runAsUser }}
           {{ end }}
           volumeMounts:
             - name: storage
