@@ -94,8 +94,10 @@ spec:
           {{- end }}
           resources:
       {{ toYaml .Values.sidecar.resources | indent 6 }}
+          {{- if .Values.sidecar.rules.securityContext }}
           securityContext:
             runAsUser: 0
+          {{ end }}
           volumeMounts:
             - name: sc-rules-volume
               mountPath: {{ .Values.sidecar.rules.folder | quote }}
@@ -118,8 +120,10 @@ spec:
             - "-{{ $key }}={{ $value }}"
           {{- end }}
           volumeMounts:
+            {{- if .Values.sidecar.rules.enabled }}
             - name: sc-rules-volume
               mountPath: {{ .Values.sidecar.rules.folder | quote }}
+            {{ end }}
             {{- if .Values.ruler.extraVolumeMounts }}
               {{ toYaml .Values.ruler.extraVolumeMounts | nindent 12}}
             {{- end }}

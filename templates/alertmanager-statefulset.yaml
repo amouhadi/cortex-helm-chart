@@ -144,8 +144,10 @@ spec:
           {{- end }}
           resources:
           {{ toYaml .Values.sidecar.resources | indent 6 }}
+          {{- if .Values.sidecar.alertmanager.securityContext }}
           securityContext:
             runAsUser: 0
+          {{ end }}
           volumeMounts:
             - name: storage
               mountPath: "/data"
