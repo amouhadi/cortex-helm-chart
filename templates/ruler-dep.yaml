@@ -93,7 +93,7 @@ spec:
               value: "{{ .Values.sidecar.rules.folderAnnotation }}"
           {{- end }}
           resources:
-            {{ toYaml .Values.sidecar.resources | indent 12 }}
+            {{- toYaml .Values.sidecar.resources | nindent 12 }}
           securityContext:
             {{- toYaml .Values.sidecar.rules.securityContext | nindent 12 }}
           volumeMounts:

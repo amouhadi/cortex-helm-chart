@@ -143,7 +143,7 @@ spec:
               value: "{{ .Values.sidecar.alertmanager.folderAnnotation }}"
           {{- end }}
           resources:
-            {{ toYaml .Values.sidecar.resources | indent 12 }}
+            {{- toYaml .Values.sidecar.resources | nindent 12 }}
           securityContext:
             {{- toYaml .Values.sidecar.alertmanager.securityContext | nindent 12 }}
           volumeMounts:
