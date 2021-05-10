@@ -93,9 +93,9 @@ spec:
               value: "{{ .Values.sidecar.rules.folderAnnotation }}"
           {{- end }}
           resources:
-      {{ toYaml .Values.sidecar.resources | indent 6 }}
+            {{ toYaml .Values.sidecar.resources | indent 12 }}
           securityContext:
-      {{- toYaml .Values.sidecar.rules.securityContext | nindent 8 }}
+            {{- toYaml .Values.sidecar.rules.securityContext | nindent 12 }}
           volumeMounts:
             - name: sc-rules-volume
               mountPath: {{ .Values.sidecar.rules.folder | quote }}

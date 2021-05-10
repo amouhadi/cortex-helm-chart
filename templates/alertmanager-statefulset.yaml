@@ -143,9 +143,9 @@ spec:
               value: "{{ .Values.sidecar.alertmanager.folderAnnotation }}"
           {{- end }}
           resources:
-          {{ toYaml .Values.sidecar.resources | indent 6 }}
+            {{ toYaml .Values.sidecar.resources | indent 12 }}
           securityContext:
-          {{- toYaml .Values.sidecar.alertmanager.securityContext | nindent 8 }}
+            {{- toYaml .Values.sidecar.alertmanager.securityContext | nindent 12 }}
           volumeMounts:
             - name: storage
               mountPath: "/data"
