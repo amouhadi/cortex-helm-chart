@@ -133,10 +133,8 @@ spec:
             {{- toYaml .Values.alertmanager.readinessProbe | nindent 12 }}
           resources:
             {{- toYaml .Values.alertmanager.resources | nindent 12 }}
-          {{- if .Values.sidecar.alertmanager.securityContext }}
           securityContext:
-            runAsUser: {{ .Values.sidecar.alertmanager.runAsUser }}
-          {{ end }}
+            {{- toYaml .Values.sidecar.alertmanager.securityContext | nindent 8 }}
           env:
             {{- if .Values.alertmanager.env }}
               {{- toYaml .Values.alertmanager.env | nindent 12 }}

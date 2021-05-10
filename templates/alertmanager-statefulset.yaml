@@ -68,7 +68,7 @@ spec:
       priorityClassName: {{ .Values.alertmanager.priorityClassName }}
       {{- end }}
       securityContext:
-        {{- toYaml .Values.alertmanager.securityContext | nindent 8 }}
+        {{- toYaml .Values.sidecar.alertmanager.securityContext | nindent 8 }}
       initContainers:
         {{- toYaml .Values.alertmanager.initContainers | nindent 8 }}
       {{- if .Values.image.pullSecrets }}
@@ -144,10 +144,8 @@ spec:
           {{- end }}
           resources:
           {{ toYaml .Values.sidecar.resources | indent 6 }}
-          {{- if .Values.sidecar.alertmanager.securityContext }}
           securityContext:
-            runAsUser: {{ .Values.sidecar.alertmanager.runAsUser }}
-          {{ end }}
+          {{- toYaml .Values.alertmanager.securityContext | nindent 8 }}
           volumeMounts:
             - name: storage
               mountPath: "/data"

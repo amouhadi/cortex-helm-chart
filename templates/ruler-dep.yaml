@@ -94,10 +94,8 @@ spec:
           {{- end }}
           resources:
       {{ toYaml .Values.sidecar.resources | indent 6 }}
-          {{- if .Values.sidecar.rules.securityContext }}
           securityContext:
-            runAsUser: {{ .Values.sidecar.alertmanager.runAsUser }}
-          {{ end }}
+      {{- toYaml .Values.sidecar.rules.securityContext | nindent 8 }}
           volumeMounts:
             - name: sc-rules-volume
               mountPath: {{ .Values.sidecar.rules.folder | quote }}

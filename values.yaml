@@ -1443,9 +1443,9 @@ sidecar:
     # If specified, the sidecar will look for annotation with this name to create folder and put graph here.
     # You can use this parameter together with `provider.foldersFromFilesStructure`to annotate configmaps and create folder structure.
     folderAnnotation: null
-    securityContext: true
+    securityContext:
+      runAsUser: 0
     # running the sidecar will also run as root
-    runAsUser: 0
     # provider configuration that lets cortex manage the rules
     provider:
       # name of the provider, should be unique
@@ -1471,8 +1471,8 @@ sidecar:
     defaultFolderName: null
     searchNamespace: null
     folderAnnotation: null
-    securityContext: true
-    runAsUser: 0
+    securityContext:
+      runAsUser: 0
     provider:
       name: sidecarProvider
       orgid: 1
