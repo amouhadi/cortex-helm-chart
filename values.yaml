@@ -1460,7 +1460,6 @@ sidecar:
       disableDelete: false
       allowUiUpdates: false
       # allow cortex to replicate rules structure from filesystem
-      foldersFromFilesStructure: false
   alertmanager:
     enabled: false
     SCProvider: true
@@ -1480,4 +1479,3 @@ sidecar:
       type: file
       disableDelete: false
       allowUiUpdates: false
-      foldersFromFilesStructure: false
