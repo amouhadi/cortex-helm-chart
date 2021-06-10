@@ -56,8 +56,8 @@ entries:
     sources:
     - https://github.com/cortexproject/cortex-helm-chart
     urls:
-    - https://cortexproject.github.io/cortex-helm-chart/cortex-0.5.0.tgz
-    version: 0.5.0
+    - https://cortexproject.github.io/cortex-helm-chart/cortex-0.4.2-rc.14.tgz
+    version: 0.4.2-rc.14
   - apiVersion: v2
     appVersion: v1.7.0
     created: "2021-06-08T10:30:58.895139082+02:00"
