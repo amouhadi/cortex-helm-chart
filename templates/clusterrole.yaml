@@ -1,9 +1,8 @@
 {{- if or .Values.ruler.sidecar.enabled .Values.alertmanager.sidecar.enabled }}
 apiVersion: rbac.authorization.k8s.io/v1
-kind: Role
+kind: ClusterRole
 metadata:
-  name: {{ template "cortex.fullname" . }}
-  namespace: {{ .Release.Namespace }}
+  name: {{ template "cortex.fullname" . }}-clusterrole
   labels:
     {{- include "cortex.labels" . | nindent 4 }}
 rules:
